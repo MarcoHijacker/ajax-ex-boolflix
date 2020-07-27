@@ -10,14 +10,27 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 		<script id="film-template" type="text/x-handlebars-template">
-
+			<li data-film="{{ filmId }}" class="film-box">
+				<span>Titolo: <b>{{ filmTitle }}</b></span><br>
+				<span>Titolo originale: <b>{{ origTitle }}</b></span><br>
+				<span>Lingua film: <b>{{ filmLanguage }}</b></span><br>
+				<span>Voto film: <b>{{ filmRate }}</b></span><br>
+			</li>
 		</script>
 	</head>
 
 	<body>
 
-		<main>
+		<header>
+			<label for="#film-search">Ricerca un film:</label>
+			<input id="film-search" type="text" name="film-search" value="">
+			<button id="search-btn" type="button" name="button">Cerca</button>
+		</header>
 
+		<main>
+			<ul id="results-list">
+
+			</ul>
 
 		</main>
 
