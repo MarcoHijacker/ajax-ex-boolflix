@@ -40,6 +40,7 @@ function addSearchBtnListener() {
 function performSearch() {
   var inputValue = $('#film-search').val();
 
+  // Chiamata AJAX per i film
   $.ajax({
     url: 'https://api.themoviedb.org/3/search/movie',
     method: 'GET',
@@ -117,6 +118,97 @@ function performSearch() {
           }
 
           console.log(filmLanguage);
+        }
+
+      } else {
+        console.log('error');
+      }
+    },
+    error: function(request, state, error) {
+      console.log('request', request);
+      console.log('state', state);
+      console.log('error', error);
+    }
+  });
+
+  // Chiamata AJAX per le serie TV
+  $.ajax({
+    url: 'https://api.themoviedb.org/3/search/tv',
+    method: 'GET',
+    data: {
+      'api_key': 'd6c46515c238258071e0cac478212d4b',
+      'query': inputValue,
+      'language': 'it-IT'
+    },
+    success: function(data) {
+      var success = data['success'];
+      var dataResults = data['results'];
+      var numResults = data['total_results'];
+      var fullStar = '<i class="fas fa-star"></i>';
+      var emptyStar = '<i class="far fa-star"></i>';
+      var tempStar = '';
+
+      var template = $('#serie-template').html();
+      var compiled = Handlebars.compile(template);
+      var target = $('#results-serie');
+
+      target.html('');
+
+      if(success != false) {
+        for (var i = 0; i < dataResults.length; i++) {
+          var serieTitle = dataResults[i].name;
+          var serieOrigTitle = dataResults[i].original_name;
+          var serieRate = Math.ceil(dataResults[i].vote_average / 2);
+          var serieLanguage = dataResults[i].original_language;
+          var serieHTML = compiled({
+            'serieId': i,
+            'serieTitle': serieTitle,
+            'serieOrigTitle': serieOrigTitle,
+            // 'serieLanguage': serieLanguage,
+            // 'serieRate': serieRate
+          });
+
+          target.append(serieHTML);
+
+          switch (serieRate) {
+            case 1:
+              tempStar= '<span>Voto in stelle: ' + fullStar + emptyStar + emptyStar + emptyStar + emptyStar + '</span><br>';
+              break;
+            case 2:
+              tempStar= '<span>Voto in stelle: ' + fullStar + fullStar + emptyStar + emptyStar + emptyStar + '</span><br>';
+              break;
+            case 3:
+              tempStar= '<span>Voto in stelle: ' + fullStar + fullStar + fullStar + emptyStar + emptyStar + '</span><br>';
+              break;
+            case 4:
+              tempStar= '<span>Voto in stelle: ' + fullStar + fullStar + fullStar + fullStar + emptyStar + '</span><br>';
+              break;
+            case 5:
+              tempStar= '<span>Voto in stelle: ' + fullStar + fullStar + fullStar + fullStar + fullStar + '</span><br>';
+              break;
+            default:
+              tempStar= '<span>Voto in stelle: ' + emptyStar + emptyStar + emptyStar + emptyStar + emptyStar + '</span><br>';
+          }
+
+          var starTarget = $('li[data-serie="' + i + '"]');
+
+          starTarget.append(tempStar);
+
+          switch (serieLanguage) {
+            case 'it':
+              starTarget.append('<span>Lingua serie: <img src="img/italy.png"></span>');
+              break;
+            case 'en':
+              starTarget.append('<span>Lingua serie: <img src="img/england.png"></span>');
+              break;
+            case 'ja':
+              starTarget.append('<span>Lingua serie: <img src="img/japan.png"></span>');
+              break;
+            default:
+              starTarget.append('<span>Lingua serie: <img src="img/unknown.png"></span>');
+          }
+
+          console.log(serieLanguage);
         }
 
       } else {

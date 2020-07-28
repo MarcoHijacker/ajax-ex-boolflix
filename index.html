@@ -12,10 +12,18 @@
 		<script type="text/javascript" src="js/script.js"></script>
 		<script id="film-template" type="text/x-handlebars-template">
 			<li data-film="{{ filmId }}" class="film-box">
-				<span>Titolo: <b>{{ filmTitle }}</b></span><br>
+				<span>Titolo film: <b>{{ filmTitle }}</b></span><br>
 				<span>Titolo originale: <b>{{ origTitle }}</b></span><br>
 				<!-- <span>Lingua film: <b>{{ filmLanguage }}</b></span><br> -->
 				<!-- <span>Voto film: <b>{{ filmRate }}</b></span><br> -->
+			</li>
+		</script>
+		<script id="serie-template" type="text/x-handlebars-template">
+			<li data-serie="{{ serieId }}" class="film-box">
+				<span>Titolo serie: <b>{{ serieTitle }}</b></span><br>
+				<span>Titolo originale: <b>{{ serieOrigTitle }}</b></span><br>
+				<!-- <span>Lingua serie: <b>{{ serieLanguage }}</b></span><br> -->
+				<!-- <span>Voto serie: <b>{{ serieRate }}</b></span><br> -->
 			</li>
 		</script>
 
@@ -31,6 +39,9 @@
 
 		<main>
 			<ul id="results-list">
+
+			</ul>
+			<ul id="results-serie">
 
 			</ul>
 

@@ -21,10 +21,10 @@ span img {
   height: auto;
 }
 /* Contenuti */
-#results-list {
+#results-list, #results-serie {
   list-style: none;
 }
-#results-list li {
+#results-list li, #results-serie li {
   margin: 10px;
 }
 #flags {
