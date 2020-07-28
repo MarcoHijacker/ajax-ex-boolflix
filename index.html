@@ -14,10 +14,11 @@
 			<li data-film="{{ filmId }}" class="film-box">
 				<span>Titolo: <b>{{ filmTitle }}</b></span><br>
 				<span>Titolo originale: <b>{{ origTitle }}</b></span><br>
-				<span>Lingua film: <b>{{ filmLanguage }}</b></span><br>
-				<span>Voto film: <b>{{ filmRate }}</b></span><br>
+				<!-- <span>Lingua film: <b>{{ filmLanguage }}</b></span><br> -->
+				<!-- <span>Voto film: <b>{{ filmRate }}</b></span><br> -->
 			</li>
 		</script>
+
 	</head>
 
 	<body>
@@ -34,6 +35,11 @@
 			</ul>
 
 		</main>
-
+		<div id="flags">
+			<img data-img="it" src="img/italy.png" alt="italy">
+			<img data-img="en" src="img/england.png" alt="england">
+			<img data-img="ja" src="img/japan.png" alt="japan">
+			<img data-img="na" src="img/unknown.png" alt="unknown">
+		</div>
 	</body>
 </html>

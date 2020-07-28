@@ -13,10 +13,20 @@ body {
   background-color: #fffff0;
   padding: 10px;
 }
+i {
+  color: orange;
+}
+span img {
+  width: 20px;
+  height: auto;
+}
 /* Contenuti */
 #results-list {
   list-style: none;
 }
 #results-list li {
   margin: 10px;
+}
+#flags {
+  display: none;
 }
