@@ -117,7 +117,6 @@ function performSearch() {
               starTarget.append('<span>Lingua film: <img src="img/unknown.png"></span>');
           }
 
-          console.log(filmLanguage);
         }
 
       } else {
@@ -208,7 +207,6 @@ function performSearch() {
               starTarget.append('<span>Lingua serie: <img src="img/unknown.png"></span>');
           }
 
-          console.log(serieLanguage);
         }
 
       } else {
