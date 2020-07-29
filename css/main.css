@@ -16,7 +16,7 @@ body {
 i {
   color: orange;
 }
-span img {
+.flag {
   width: 20px;
   height: auto;
 }

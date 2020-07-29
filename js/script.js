@@ -2,6 +2,17 @@
 
 // Milestone 1: COMPLETA!
 // Milestone 2: COMPLETA!
+// Milestone 3:
+// In questa milestone come prima cosa aggiungiamo la copertina del film o della serie
+// al nostro elenco. Ci viene passata dall’API solo la parte finale dell’URL, questo
+// perché poi potremo generare da quella porzione di URL tante dimensioni diverse.
+// Dovremo prendere quindi l’URL base delle immagini di TMDB:
+// https://image.tmdb.org/t/p/​ per poi aggiungere la dimensione che vogliamo generare
+// (troviamo tutte le dimensioni possibili a questo link:
+// https://www.themoviedb.org/talk/53c11d4ec3a3684cf4006400​) per poi aggiungere la
+// parte finale dell’URL passata dall’API.
+// Esempio di URL che torna la copertina di BORIS:
+// https://image.tmdb.org/t/p/w185/s2VDcsMh9ZhjFUxw77uCFDpTuXp.jpg
 
 // Area init
 
@@ -26,7 +37,7 @@ function addSearchBtnListener() {
     if (key == 13) {
       var inputValue = $('#query-search').val();
       $('#query-search').val('');
-      
+
       filmSearch(inputValue);
       serieSearch(inputValue);
     }
@@ -61,6 +72,7 @@ function filmSearch(inputValue) {
         var origTitle = dataResults[i].original_title;
         var filmRate = Math.ceil(dataResults[i].vote_average / 2);
         var filmLanguage = dataResults[i].original_language;
+        var filmCover = `<img src="https://image.tmdb.org/t/p/w185${dataResults[i].poster_path}" alt="N/A">`;
         var starRate = '';
         var filmFlag = '';
 
@@ -73,7 +85,8 @@ function filmSearch(inputValue) {
           'origTitle': origTitle,
           'starRate': starRate,
           'filmRate': filmRate,
-          'filmFlag': filmFlag
+          'filmFlag': filmFlag,
+          'filmCover': filmCover
         });
 
         target.append(filmHTML);
@@ -115,6 +128,7 @@ function serieSearch(inputValue) {
         var serieOrigTitle = dataResults[i].original_name;
         var serieRate = Math.ceil(dataResults[i].vote_average / 2);
         var serieLanguage = dataResults[i].original_language;
+        var serieCover = `<img src="https://image.tmdb.org/t/p/w185${dataResults[i].poster_path}" alt="N/A">`;
         var starRate = '';
         var serieFlag = '';
 
@@ -127,7 +141,8 @@ function serieSearch(inputValue) {
           'serieOrigTitle': serieOrigTitle,
           'starRate': starRate,
           'serieRate': serieRate,
-          'serieFlag': serieFlag
+          'serieFlag': serieFlag,
+          'serieCover': serieCover
         });
 
         target.append(serieHTML);
@@ -163,16 +178,16 @@ function getFlag(language) {
 
   switch (language) {
     case 'it':
-    flag = `<img src="img/${language}.png">`;
+    flag = `<img class="flag" src="img/${language}.png">`;
     break;
     case 'en':
-    flag = `<img src="img/${language}.png">`;
+    flag = `<img class="flag" src="img/${language}.png">`;
     break;
     case 'ja':
-    flag = `<img src="img/${language}.png">`;
+    flag = `<img class="flag" src="img/${language}.png">`;
     break;
     default:
-    flag = `<img src="img/unknown.png">`;
+    flag = `<img class="flag" src="img/unknown.png">`;
   }
   return flag;
 }
