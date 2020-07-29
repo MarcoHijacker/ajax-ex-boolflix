@@ -17,6 +17,7 @@ function addSearchBtnListener() {
   $('#search-btn').click(function() {
     var inputValue = $('#query-search').val();
     $('#query-search').val('');
+
     filmSearch(inputValue);
     serieSearch(inputValue);
   });
@@ -25,6 +26,7 @@ function addSearchBtnListener() {
     if (key == 13) {
       var inputValue = $('#query-search').val();
       $('#query-search').val('');
+      
       filmSearch(inputValue);
       serieSearch(inputValue);
     }
