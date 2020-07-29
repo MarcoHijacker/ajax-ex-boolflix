@@ -73,7 +73,6 @@ function filmSearch() {
           });
 
           target.append(filmHTML);
-
         }
 
       } else {
