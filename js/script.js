@@ -15,21 +15,24 @@ $(document).ready(init);
 
 function addSearchBtnListener() {
   $('#search-btn').click(function() {
-    filmSearch();
-    serieSearch();
+    var inputValue = $('#query-search').val();
+    $('#query-search').val('');
+    filmSearch(inputValue);
+    serieSearch(inputValue);
   });
   $('#query-search').keydown(function() {
     var key = event.which;
     if (key == 13) {
-      filmSearch();
-      serieSearch();
+      var inputValue = $('#query-search').val();
+      $('#query-search').val('');
+      filmSearch(inputValue);
+      serieSearch(inputValue);
     }
   })
 }
 
 // Funzione di ricerca film
-function filmSearch() {
-  var inputValue = $('#query-search').val();
+function filmSearch(inputValue) {
 
   // Chiamata AJAX per i film
   $.ajax({
@@ -51,32 +54,27 @@ function filmSearch() {
 
       target.html('');
 
-      if(success != false) {
-        for (var i = 0; i < dataResults.length; i++) {
-          var filmTitle = dataResults[i].title;
-          var origTitle = dataResults[i].original_title;
-          var filmRate = Math.ceil(dataResults[i].vote_average / 2);
-          var filmLanguage = dataResults[i].original_language;
-          var starRate = '';
-          var filmFlag = '';
+      for (var i = 0; i < dataResults.length; i++) {
+        var filmTitle = dataResults[i].title;
+        var origTitle = dataResults[i].original_title;
+        var filmRate = Math.ceil(dataResults[i].vote_average / 2);
+        var filmLanguage = dataResults[i].original_language;
+        var starRate = '';
+        var filmFlag = '';
 
-          starRate = getStarsRate(filmRate);
-          filmFlag = getFlag(filmLanguage);
+        starRate = getStarsRate(filmRate);
+        filmFlag = getFlag(filmLanguage);
 
-          var filmHTML = compiled({
-            'filmId': i,
-            'filmTitle': filmTitle,
-            'origTitle': origTitle,
-            'starRate': starRate,
-            'filmRate': filmRate,
-            'filmFlag': filmFlag
-          });
+        var filmHTML = compiled({
+          'filmId': i,
+          'filmTitle': filmTitle,
+          'origTitle': origTitle,
+          'starRate': starRate,
+          'filmRate': filmRate,
+          'filmFlag': filmFlag
+        });
 
-          target.append(filmHTML);
-        }
-
-      } else {
-        console.log('error');
+        target.append(filmHTML);
       }
     },
     error: function(request, state, error) {
@@ -88,8 +86,7 @@ function filmSearch() {
 }
 
 // Funzione di ricerca serie TV
-function serieSearch() {
-  var inputValue = $('#query-search').val();
+function serieSearch(inputValue) {
 
   // Chiamata AJAX per le serie
   $.ajax({
@@ -111,32 +108,27 @@ function serieSearch() {
 
       target.html('');
 
-      if(success != false) {
-        for (var i = 0; i < dataResults.length; i++) {
-          var serieTitle = dataResults[i].name;
-          var serieOrigTitle = dataResults[i].original_name;
-          var serieRate = Math.ceil(dataResults[i].vote_average / 2);
-          var serieLanguage = dataResults[i].original_language;
-          var starRate = '';
-          var serieFlag = '';
+      for (var i = 0; i < dataResults.length; i++) {
+        var serieTitle = dataResults[i].name;
+        var serieOrigTitle = dataResults[i].original_name;
+        var serieRate = Math.ceil(dataResults[i].vote_average / 2);
+        var serieLanguage = dataResults[i].original_language;
+        var starRate = '';
+        var serieFlag = '';
 
-          starRate = getStarsRate(serieRate);
-          serieFlag = getFlag(serieLanguage);
+        starRate = getStarsRate(serieRate);
+        serieFlag = getFlag(serieLanguage);
 
-          var serieHTML = compiled({
-            'serieId': i,
-            'serieTitle': serieTitle,
-            'serieOrigTitle': serieOrigTitle,
-            'starRate': starRate,
-            'serieRate': serieRate,
-            'serieFlag': serieFlag
-          });
+        var serieHTML = compiled({
+          'serieId': i,
+          'serieTitle': serieTitle,
+          'serieOrigTitle': serieOrigTitle,
+          'starRate': starRate,
+          'serieRate': serieRate,
+          'serieFlag': serieFlag
+        });
 
-          target.append(serieHTML);
-        }
-
-      } else {
-        console.log('error');
+        target.append(serieHTML);
       }
     },
     error: function(request, state, error) {
@@ -145,8 +137,6 @@ function serieSearch() {
       console.log('error', error);
     }
   });
-  // Elimino l'input solo dopo la fine della funzione serieSearch() che avviene dopo filmSearch()
-  $('#query-search').val('');
 }
 
 // Dato un valore da 0 a 5 (rate) restituisco una stringa HTML con la valutazione a stelle
