@@ -2,17 +2,7 @@
 
 // Milestone 1: COMPLETA!
 // Milestone 2: COMPLETA!
-// Milestone 3:
-// In questa milestone come prima cosa aggiungiamo la copertina del film o della serie
-// al nostro elenco. Ci viene passata dall’API solo la parte finale dell’URL, questo
-// perché poi potremo generare da quella porzione di URL tante dimensioni diverse.
-// Dovremo prendere quindi l’URL base delle immagini di TMDB:
-// https://image.tmdb.org/t/p/​ per poi aggiungere la dimensione che vogliamo generare
-// (troviamo tutte le dimensioni possibili a questo link:
-// https://www.themoviedb.org/talk/53c11d4ec3a3684cf4006400​) per poi aggiungere la
-// parte finale dell’URL passata dall’API.
-// Esempio di URL che torna la copertina di BORIS:
-// https://image.tmdb.org/t/p/w185/s2VDcsMh9ZhjFUxw77uCFDpTuXp.jpg
+// Milestone 3: COMPLETA!
 
 // Area init
 
