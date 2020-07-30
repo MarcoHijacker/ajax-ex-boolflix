@@ -52,11 +52,9 @@ i.fa-play-circle {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  flex-wrap: wrap;
   border: solid 2px #cecece;
   width: 342px;
   height: 513px;
-  padding: 15px;
   font-size: 14px;
 }
 #flags {
@@ -93,7 +91,7 @@ i.fa-play-circle {
 .trama {
   font-weight: 400;
   font-size: 11px;
-  margin-top: 5px;
+  padding-bottom: 20px;
 }
 label i.fa-search {
   margin-right: 10px;
@@ -102,11 +100,15 @@ label i.fa-search {
   cursor: pointer;
 }
 .film-box span {
+  background-color: #141414c7;
+  padding-left: 20px;
+  padding-right: 20px;
   display: none;
+}
+.film-box span:first-child {
+  padding-top: 10px;
+  border-top: solid 1px red;
 }
 .film-box:hover span {
   display: flex;
-}
-.film-box:hover {
-  filter: brightness(30%);
 }
