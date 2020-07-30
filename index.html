@@ -6,28 +6,31 @@
 		<title>Esercizio Boolflix</title>
 		<link rel="stylesheet" href="css/main.css">
 		<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 		<script src="https://kit.fontawesome.com/d4368e456d.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 		<script id="film-template" type="text/x-handlebars-template">
-			<li data-film="{{ filmId }}" class="film-box">
+			<li data-film="{{ filmId }}" class="film-box" style="background-image: url('{{ coverUrl }}');">
+				<span><i class="fas fa-play-circle"></i></span>
 				<span>Titolo film: <b>{{ filmTitle }}</b></span><br>
 				<span>Titolo originale: <b>{{ origTitle }}</b></span><br>
-				<span>Voto film: <b>{{ filmRate }}</b></span><br>
+				<!-- <span>Voto film: <b>{{ filmRate }}</b></span><br> -->
 				<span>Voto in stelle: {{{ starRate }}}</span><br>
 				<span>Lingua film: {{{ filmFlag }}}</span><br>
-				<span>Copertina film:<br> {{{ filmCover }}}</span>
+				<span class="trama">{{{ filmStory }}}</span><br>
 			</li>
 		</script>
 		<script id="serie-template" type="text/x-handlebars-template">
-			<li data-serie="{{ serieId }}" class="film-box">
+			<li data-serie="{{ serieId }}" class="film-box" style="background-image: url('{{ coverUrl }}');">
+				<span><i class="fas fa-play-circle"></i></span>
 				<span>Titolo serie: <b>{{ serieTitle }}</b></span><br>
 				<span>Titolo originale: <b>{{ serieOrigTitle }}</b></span><br>
-				<span>Voto serie: <b>{{ serieRate }}</b></span><br>
+				<!-- <span>Voto serie: <b>{{ serieRate }}</b></span><br> -->
 				<span>Voto in stelle: {{{ starRate }}}</span><br>
 				<span>Lingua serie: {{{ serieFlag }}}</span><br>
-				<span>Copertina serie:<br> {{{ serieCover }}}</span>
+				<span class="trama">{{{ serieStory }}}</span><br>
 			</li>
 		</script>
 
@@ -36,9 +39,33 @@
 	<body>
 
 		<header>
-			<label for="#query-search">Ricerca un film:</label>
-			<input id="query-search" type="text" name="film-search" value="">
-			<button id="search-btn" type="button" name="button">Cerca</button>
+			<div id="logo">
+				BOOLFLIX
+			</div>
+			<div class="navigation">
+				<nav>
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Serie TV</a></li>
+						<li><a href="#">Film</a></li>
+						<li><a href="#">Nuovi arrivi</a></li>
+						<li><a href="#">La mia lista</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="search">
+				<label for="#query-search"><i class="fas fa-search"></i></label>
+				<input id="query-search" type="text" name="film-search" value="">
+				<i id="search-btn" class="fas fa-arrow-alt-circle-right"></i>
+
+				<span>BAMBINI</span>
+
+				<i class="fas fa-gift"></i>
+
+				<i class="fas fa-bell"></i>
+
+				<img src="img/user.png" alt="" width="40px" height="auto">
+			</div>
 		</header>
 
 		<main>

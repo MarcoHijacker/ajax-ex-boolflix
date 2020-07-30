@@ -62,12 +62,15 @@ function filmSearch(inputValue) {
         var origTitle = dataResults[i].original_title;
         var filmRate = Math.ceil(dataResults[i].vote_average / 2);
         var filmLanguage = dataResults[i].original_language;
-        var filmCover = `<img src="https://image.tmdb.org/t/p/w185${dataResults[i].poster_path}" alt="N/A">`;
+        var coverApi = dataResults[i].poster_path;
+        var filmStory = dataResults[i].overview;
+        var coverUrl = '';
         var starRate = '';
         var filmFlag = '';
 
         starRate = getStarsRate(filmRate);
         filmFlag = getFlag(filmLanguage);
+        coverUrl = getCover(coverApi);
 
         var filmHTML = compiled({
           'filmId': i,
@@ -76,7 +79,8 @@ function filmSearch(inputValue) {
           'starRate': starRate,
           'filmRate': filmRate,
           'filmFlag': filmFlag,
-          'filmCover': filmCover
+          'coverUrl': coverUrl,
+          'filmStory': filmStory
         });
 
         target.append(filmHTML);
@@ -118,12 +122,15 @@ function serieSearch(inputValue) {
         var serieOrigTitle = dataResults[i].original_name;
         var serieRate = Math.ceil(dataResults[i].vote_average / 2);
         var serieLanguage = dataResults[i].original_language;
-        var serieCover = `<img src="https://image.tmdb.org/t/p/w185${dataResults[i].poster_path}" alt="N/A">`;
+        var coverApi = dataResults[i].poster_path;
+        var serieStory = dataResults[i].overview;
+        var coverUrl = '';
         var starRate = '';
         var serieFlag = '';
 
         starRate = getStarsRate(serieRate);
         serieFlag = getFlag(serieLanguage);
+        coverUrl = getCover(coverApi);
 
         var serieHTML = compiled({
           'serieId': i,
@@ -132,7 +139,8 @@ function serieSearch(inputValue) {
           'starRate': starRate,
           'serieRate': serieRate,
           'serieFlag': serieFlag,
-          'serieCover': serieCover
+          'coverUrl': coverUrl,
+          'serieStory': serieStory
         });
 
         target.append(serieHTML);
@@ -180,4 +188,14 @@ function getFlag(language) {
     flag = `<img class="flag" src="img/unknown.png">`;
   }
   return flag;
+}
+
+function getCover(itemPath) {
+  var cover = '';
+    if(itemPath) {
+    cover = `https://image.tmdb.org/t/p/w342${itemPath}`;
+  } else {
+    cover = 'img/notfound.png';
+  }
+  return cover;
 }
