@@ -52,7 +52,7 @@ i.fa-play-circle {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: flex-start;
+  flex-wrap: wrap;
   border: solid 2px #cecece;
   width: 342px;
   height: 513px;
@@ -107,6 +107,6 @@ label i.fa-search {
 .film-box:hover span {
   display: flex;
 }
-/* .film-box:hover {
+.film-box:hover {
   filter: brightness(30%);
-} */
+}
