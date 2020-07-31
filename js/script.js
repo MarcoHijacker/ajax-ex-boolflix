@@ -3,6 +3,7 @@
 // Milestone 1: COMPLETA!
 // Milestone 2: COMPLETA!
 // Milestone 3: COMPLETA!
+// Milestone 4: COMPLETA!
 
 // Area init
 
@@ -55,7 +56,12 @@ function filmSearch(inputValue) {
       var compiled = Handlebars.compile(template);
       var target = $('#results-list');
 
+      $('.empty-films').hide();
       target.html('');
+
+      if(data['results'].length == 0) {
+        $('.empty-films').show();
+      }
 
       for (var i = 0; i < dataResults.length; i++) {
         var filmTitle = dataResults[i].title;
@@ -92,6 +98,7 @@ function filmSearch(inputValue) {
       console.log('error', error);
     }
   });
+
 }
 
 // Funzione di ricerca serie TV
@@ -115,7 +122,12 @@ function serieSearch(inputValue) {
       var compiled = Handlebars.compile(template);
       var target = $('#results-serie');
 
+      $('.empty-series').hide();
       target.html('');
+
+      if(data['results'].length == 0) {
+        $('.empty-series').show();
+      }
 
       for (var i = 0; i < dataResults.length; i++) {
         var serieTitle = dataResults[i].name;
@@ -190,6 +202,7 @@ function getFlag(language) {
   return flag;
 }
 
+// Fornisce l'url della copertina, dato il nome del file immagine restituito dall'API
 function getCover(itemPath) {
   var cover = '';
     if(itemPath) {
