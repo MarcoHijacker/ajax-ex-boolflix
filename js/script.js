@@ -9,11 +9,33 @@
 
 function init() {
   addSearchBtnListener();
+  addFiltersListener()
 }
 
 $(document).ready(init);
 
 // Area funzioni
+
+function addFiltersListener() {
+  $('#allresults').click(function functionName() {
+    $('#results-list').show();
+    $('.films-title').show();
+    $('#results-serie').show();
+    $('.series-title').show();
+  });
+  $('#onlyfilms').click(function functionName() {
+    $('#results-list').show();
+    $('.films-title').show();
+    $('#results-serie').hide();
+    $('.series-title').hide();
+  });
+  $('#onlyseries').click(function functionName() {
+    $('#results-serie').show();
+    $('.series-title').show();
+    $('#results-list').hide();
+    $('.films-title').hide();
+  });
+}
 
 function addSearchBtnListener() {
   $('#search-btn').click(function() {

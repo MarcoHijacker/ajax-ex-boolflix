@@ -69,13 +69,21 @@
 		</header>
 
 		<main>
-			<h2>Area Film:</h2>
+			<span class="selection">Mostra: </span>
+			<input id="allresults" type="radio" name="selection" value="allresults" checked>
+			<label for="onlyfilms">Tutti</label>
+			<input id="onlyfilms" type="radio" name="selection" value="onlyfilms">
+			<label for="onlyfilms">Solo Film</label>
+			<input id="onlyseries" type="radio" name="selection" value="onlyseries">
+			<label for="onlyfilms">Solo Serie TV</label>
+
+			<h2 class="films-title">Area Film:</h2>
 			<div class="empty-films" style="display: none;">
 				Nessun risultato di Film per i parametri forniti.
 			</div>
 			<ul id="results-list">
 			</ul>
-			<h2>Area Serie TV:</h2>
+			<h2 class="series-title">Area Serie TV:</h2>
 			<div class="empty-series" style="display: none;">
 				Nessun risultato di Serie TV per i parametri forniti.
 			</div>

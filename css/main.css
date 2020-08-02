@@ -28,7 +28,13 @@ main h2 {
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
 }
+input {
+  margin-left: 25px;
+}
 /* Contenuti */
+.selection {
+  margin-left: 25px;
+}
 i.fa-star {
   color: orange;
 }
@@ -38,8 +44,9 @@ i.fa-play-circle {
   cursor: pointer;
 }
 .flag {
-  width: 20px;
+  width: 18px;
   height: auto;
+  border-radius: 2px;
 }
 #logo {
   font-family: 'Bebas Neue', cursive;
